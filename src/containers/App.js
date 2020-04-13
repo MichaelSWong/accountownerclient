@@ -4,8 +4,10 @@ import Layout from '../components/Layout/Layout';
 import Home from '../components/Home/Home';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import NotFound from '../components/ErrorPages/NotFound';
-import OwnerList from './Owner/OwnerList/OwnerList';
+//import OwnerList from './Owner/OwnerList/OwnerList';
 import asyncComponent from '../hoc/AsyncComponent/AsyncComponent';
+import InternalServer from '../components/ErrorPages/InternalServer';
+import OwnerDetails from './Owner/OwnerDetails/OwnerDetails';
 
 const AsyncOwnerList = asyncComponent(() => {
   return import('./Owner/OwnerList/OwnerList');
@@ -19,6 +21,8 @@ class App extends Component {
           <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/owner-list' component={AsyncOwnerList} />
+            <Route path='/ownerDetails/:id' component={OwnerDetails} />
+            <Route path='/500' component={InternalServer} />
             <Route path='*' component={NotFound} />
           </Switch>
         </Layout>

@@ -2,15 +2,17 @@ import React, { Component } from 'react';
 import { Table, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Aux from '../../../hoc/Auxiliary/Auxiliary';
+import Owner from '../../../components/OwnerComponents/Owner/Owner';
+
 import { connect } from 'react-redux';
 import * as repositoryActions from '../../../store/actions/repositoryActions';
-import Owner from '../../../components/OwnerComponents/Owner/Owner';
 
 class OwnerList extends Component {
   componentDidMount = () => {
     let url = '/api/owner';
     this.props.onGetData(url, { ...this.props });
   };
+
   render() {
     let owners = [];
     if (this.props.data && this.props.data.length > 0) {
@@ -18,6 +20,7 @@ class OwnerList extends Component {
         return <Owner key={owner.id} owner={owner} {...this.props} />;
       });
     }
+
     return (
       <Aux>
         <Row>
@@ -50,12 +53,14 @@ class OwnerList extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    data: state.data,
+    data: state.repository.data,
   };
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onGetData: (url, props) => dispatch(repositoryActions.getData(url, props)),
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(OwnerList);

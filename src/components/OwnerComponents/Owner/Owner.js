@@ -4,7 +4,7 @@ import Moment from 'react-moment';
 import { Button } from 'react-bootstrap';
 
 const redirectToOwnerDetails = (id, history) => {
-  history.push('/ownerDetails' + id);
+  history.push('/ownerDetails/' + id);
 };
 
 const redirectToUpdateOwner = (id, history) => {
