@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Card } from 'react-bootstrap';
 import * as repositoryActions from '../../../store/actions/repositoryActions';
 import Moment from 'react-moment';
 import OwnersAccounts from '../../../components/OwnerComponents/OwnersAccounts/OwnersAccounts';
@@ -48,22 +48,23 @@ class OwnerDetails extends Component {
 
     return (
       <Aux>
-        <Row>
-          <Col md={3}>
-            <strong>Owner name:</strong>
-          </Col>
-          <Col md={3}>{owner.name}</Col>
-        </Row>
-        <Row>
-          <Col md={3}>
-            <strong>Date of birth:</strong>
-          </Col>
-          <Col md={3}>
-            <Moment format='DD/MM/YYYY'>{owner.dateOfBirth}</Moment>
-          </Col>
-        </Row>
-        {this.renderTypeOfUserConditionally(owner)}
-
+        <Card>
+          <Row>
+            <Col md={3}>
+              <strong>Owner name:</strong>
+            </Col>
+            <Col md={3}>{owner.name}</Col>
+          </Row>
+          <Row>
+            <Col md={3}>
+              <strong>Date of birth:</strong>
+            </Col>
+            <Col md={3}>
+              <Moment format='DD/MM/YYYY'>{owner.dateOfBirth}</Moment>
+            </Col>
+          </Row>
+          {this.renderTypeOfUserConditionally(owner)}
+        </Card>
         <OwnersAccounts accounts={owner.accounts} />
       </Aux>
     );
