@@ -24,7 +24,7 @@ const input = (props) => {
               type={props.type}
               value={props.value}
               onChange={props.changed}
-              onBlue={props.blue}
+              onBlur={props.blur}
             />
           </Col>
           <Col>
